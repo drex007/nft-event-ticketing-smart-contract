@@ -9,13 +9,13 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Burnable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
-contract MyToken is ERC721URIStorage, Ownable {
+contract NftTicketing is ERC721URIStorage, Ownable {
 
     using Counters for Counters.Counter;
 
 
     constructor(uint _eventFee)
-        ERC721("MyToken", "MTK")
+        ERC721("DigiPass", "DIP")
         Ownable()
     {
         eventFee = _eventFee;
