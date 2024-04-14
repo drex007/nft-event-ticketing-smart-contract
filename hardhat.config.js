@@ -4,6 +4,7 @@ dotenv.config()
 
 const PRIVATE_KEY = process.env.WALLET_PRIVATE_KEY || ""
 const ALCHEMY_KEY = process.env.ALCHEMY_KEY || ""
+const ETHERSCAN_APIKEY = process.env.ETHERSCAN_APIKEY || ""
 
 
 /** @type import('hardhat/config').HardhatUserConfig */
@@ -27,6 +28,9 @@ module.exports = {
       { version: "0.8.0" },
       { version: "0.8.24" }
     ]
+  },
+  etherscan: {
+    apiKey: ETHERSCAN_APIKEY,
   },
   settings: {
     optimizer: {
