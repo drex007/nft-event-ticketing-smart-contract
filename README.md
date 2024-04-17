@@ -10,8 +10,4 @@ npx hardhat test
 REPORT_GAS=true npx hardhat test
 npx hardhat node
 npx hardhat ignition deploy ./ignition/modules/Lock.js
-npx hardhat ignition deploy ignition/modules/ModuleName.js --network networkName --verify #Deploy and verify
-npx hardhat ignition verify chain-Id
 ```
-
-

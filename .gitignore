@@ -14,4 +14,3 @@ node_modules
 /coverage.json
 /ignition/deployments/**
 /ignition/deployments/*
-

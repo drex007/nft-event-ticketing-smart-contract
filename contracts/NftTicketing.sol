@@ -16,7 +16,7 @@ contract NftTicketing is ERC721URIStorage, Ownable {
 
     constructor(uint _eventFee)
         ERC721("DigiPass", "DIP")
-        Ownable()
+        Ownable(msg.sender)
     {
         eventFee = _eventFee;
     }
@@ -43,7 +43,7 @@ contract NftTicketing is ERC721URIStorage, Ownable {
         uint eventPrice;
         string eventDescription;
         uint ticketCloseDate;
-        bool isOpen;
+        string eventTitle;
         address eventOwner;
         uint dateOfEvent;
         uint ticketQuantity;
@@ -57,7 +57,7 @@ contract NftTicketing is ERC721URIStorage, Ownable {
     struct EventCreationStruct {
         uint eventPrice;
         uint ticketCloseDate;
-        bool isOpen;
+        bool eventTitle;
         uint dateOfEvent;
         uint ticketQuantity;
         string eventImageUrl;
@@ -81,7 +81,6 @@ contract NftTicketing is ERC721URIStorage, Ownable {
         uint addressCount = 0;
 
         EventStruct storage currentEvent = eventList[eventId];
-        require(currentEvent.isOpen == true, "Event ticket sale is closed at the moment");
         require(currentEvent.eventPrice >= msg.value, "Amount must equal ticket price");
         require(currentEvent.ticketsMinted < currentEvent.ticketQuantity, "Ticket max reached");
 
@@ -116,7 +115,7 @@ contract NftTicketing is ERC721URIStorage, Ownable {
   function createEvent(
         uint dateOfEvent,
         uint ticketCloseDate,
-        bool isOpen,
+        string memory eventTitle,
         uint eventPrice,
         uint ticketQuantity,
         string memory eventImageUrl,
@@ -139,7 +138,7 @@ contract NftTicketing is ERC721URIStorage, Ownable {
         eventVariable.dateOfEvent = dateOfEvent;
         eventVariable.ticketCloseDate = ticketCloseDate;
         eventVariable.eventDescription = eventDescription;
-        eventVariable.isOpen = isOpen;
+        eventVariable.eventTitle = eventTitle;
         eventVariable.eventPrice = eventPrice;
         eventVariable.ticketQuantity = ticketQuantity;
         eventVariable.ticketsMinted = 0;
@@ -206,4 +205,3 @@ contract NftTicketing is ERC721URIStorage, Ownable {
 
 
 }
-
