@@ -6,7 +6,7 @@
   "dependencies": {
     "@openzeppelin/contracts": "^4.9.6",
     "dotenv": "^16.4.5",
-    "hardhat": "^2.22.2"
+    "hardhat": "^2.14.2"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",

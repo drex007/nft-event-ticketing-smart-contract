@@ -5,21 +5,29 @@ pragma solidity >=0.7.3 <0.9.0;
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Pausable.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
+// import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Burnable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
-contract NftTicketing is ERC721URIStorage, Ownable {
+contract NftTicketing is ERC721URIStorage {
 
     using Counters for Counters.Counter;
+    address public owner;
 
 
     constructor(uint _eventFee)
         ERC721("DigiPass", "DIP")
-        Ownable(msg.sender)
+       
     {
         eventFee = _eventFee;
+        owner = msg.sender;
     }
+    //Modifiers
+modifier onlyOwner {
+    require(msg.sender == owner,"Unathourized" );
+    _;
+}
+
     //Variables
 
     bool public eventFundWithdrawalStatus = false;

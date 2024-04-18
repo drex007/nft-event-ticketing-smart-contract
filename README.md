@@ -9,5 +9,8 @@ npx hardhat help
 npx hardhat test
 REPORT_GAS=true npx hardhat test
 npx hardhat node
-npx hardhat ignition deploy ./ignition/modules/Lock.js
+npx hardhat ignition deploy ./ignition/modules/Lock.js --network netWorkName
+CONTRACT_ADDRESS="0x2968F0F9250A9f470D866Cf17e8e593bfeFb2827"
+
+npx hardhat verify --network tMorph 0x2968F0F9250A9f470D866Cf17e8e593bfeFb2827 "constructorValue"
 ```
